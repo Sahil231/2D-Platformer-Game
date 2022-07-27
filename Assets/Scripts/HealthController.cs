@@ -13,8 +13,8 @@ public class HealthController : MonoBehaviour
     {
         tmp= gameObject.GetComponent<TextMeshProUGUI>();
         playerController= GameObject.Find("Player").GetComponent<PlayerController>();
-        RenderUI();
         health= 3;
+        RenderUI();
     }
     public void TakeDamage()
     {
