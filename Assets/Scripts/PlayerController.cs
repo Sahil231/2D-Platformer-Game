@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool falling= false;
     private ScoreController scoreController;
     private HealthController healthController;
+    public GameOverController gameOverController;
 
     void Start()
     {
@@ -40,8 +41,8 @@ public class PlayerController : MonoBehaviour
     }
     public void KillPlayer()
     {
-        Debug.Log("Restart");
-        SceneManager.LoadScene(0);
+        this.enabled= false;
+        gameOverController.OnPlayerDeath();
     }
 
     public void GetPoints()
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if(transform.position.y<lowerDeadPoint)
         {
-            transform.position= levelStart.transform.position;
+            TakeDamage();
         }
     }
     private void Movement(float horizontal, float vertical)
