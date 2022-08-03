@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
-    public Button button;
+    public Button restartButton;
+    public Button quitButton;
     private void Awake() {
-        button.onClick.AddListener(RestartLevel);   
+        restartButton.onClick.AddListener(RestartLevel);  
+        quitButton.onClick.AddListener(Quit);
     }
     public void OnPlayerDeath()
     {
@@ -16,6 +18,10 @@ public class GameOverController : MonoBehaviour
     }
 
     private void RestartLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+    private void Quit()
     {
         SceneManager.LoadScene(0);
     }
