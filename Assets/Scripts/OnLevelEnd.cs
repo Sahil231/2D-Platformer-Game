@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OnLevelEnd : MonoBehaviour
 {
@@ -8,7 +9,14 @@ public class OnLevelEnd : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerController>()!=null)
         {
-            Debug.Log("Level End!");
+            if (SceneManager.GetActiveScene().buildIndex+1!=5)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }

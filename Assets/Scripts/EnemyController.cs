@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
         pc= collision.gameObject.GetComponent<PlayerController>();
         if(pc!=null)
         {
-            pc.TakeDamage();
+            pc.TakeDamage() ;
         }
     }
     float setTime;
