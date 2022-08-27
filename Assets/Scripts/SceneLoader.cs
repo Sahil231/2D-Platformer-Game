@@ -14,6 +14,22 @@ public class SceneLoader : MonoBehaviour
 
     void onClick()
     {
+        if(sceneName=="LobbyScreen")
         SceneManager.LoadScene(sceneName);
+        else{
+            LevelStatus levelStatus = LevelManager.Instance.getLevelStatus(sceneName);
+            switch(levelStatus)
+            {
+                case LevelStatus.Locked:
+                    Debug.Log("Level Is Locked");
+                    break;
+                case LevelStatus.Unlocked:
+                    SceneManager.LoadScene(sceneName);
+                    break;
+                case LevelStatus.Completed:
+                    SceneManager.LoadScene(sceneName);
+                    break;
+            }
+        }
     }
 }
